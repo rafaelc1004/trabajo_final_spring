@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1 align="center">Listado de Autores</h1>
+
+        <div class="container">
+            <div class="row">
+                <a th:href="@{/autor/nuevo}">Nueva Autor</a>
+                <table class="table table-success table-striped">
+
+                    <thead>
+                        <tr>
+                            <th scope="col row">Id</th>
+                            <th scope="col">Rut</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Apellido Paterno</th>
+                            <th scope="col">Apellido Materno</th>
+                            <th scope="col">Nacionalidad</th>
+                            <th scope="col">Fecha Nacimiento</th>
+                            <th scope="col">Fecha Defuncion</th>
+                            <th scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="autor : ${autores}">
+                            <th scope="row" th:text="${autor.id}"></th>
+                            <td th:text="${autor.rut}"></td>
+                            <td th:text="${autor.nombre}"></td>
+                            <td th:text="${autor.ApellidoP}"></td>
+                            <td th:text="${autor.ApellidoM}"></td>
+                            <td th:text="${autor.nacionalidad}"></td>
+                            <td th:text="${autor.fechaNacimiento}"></td>
+                            <td th:text="${autor.fechaDefuncion}"></td>
+                            
+                            <td>
+                                <a th:href="@{/autor/editar/{id}(id=${autor.id})}">Editar</a>
+                                <a th:href="@{/autor/eliminar/{id}(id=${autor.id})}">Eliminar</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>
